@@ -11,7 +11,7 @@ library(readr)
 ```
 
 ```{r}
-steam_data <- read.csv(url("https://raw.githubusercontent.com/TealKatt/Data-Science-Project/main/Project/data/steam.csv?token=AU22RCO6KMDCLO35MYXB3NTBWFJN2"))
+steam_data <- read.csv(url("https://raw.githubusercontent.com/TealKatt/Data-Science-Project/main/data/steam.csv?token=AU22RCLW7XP76J7ZLNMKGU3BWFK7O"))
 
 steam_data
 ```
