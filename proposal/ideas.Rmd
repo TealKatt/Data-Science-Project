@@ -1,0 +1,47 @@
+Final-Project
+
+Introduction: How popular are First-Person Shooter (FPS) games amongst other video game genres?
+
+Sub questions:
+  
+   How many FPS games are there out of other genres?
+  
+   Does it depend on what studio works on a shooter game? If So which developer?
+  
+Links to possible datasets:
+
+  https://www.kaggle.com/trolukovich/steam-games-complete-dataset
+  
+  https://www.kaggle.com/aayushmishra1512/best-selling-video-games-in-the-world
+  
+  https://www.kaggle.com/sidtwr/videogames-sales-dataset
+ 
+  https://www.kaggle.com/andreshg/video-games-eda-and-visualization
+ 
+Finalized dataset:
+
+  https://www.kaggle.com/nikdavis/steam-store-games
+  
+Context (Draft) - Like all types of genres in games, shooting-based games fulfill the wants of a certain group of players when it comes to video games. Shooting games are often divided amongst the perspective of the player, whether the game depicts the player as a ficticious character (Third-Person) or rather the player themselves (First-Person). The shooting genre involves use of long ranged weapons. 
+
+Ideas for graphs: 
+
+1. Have a bar chart with the ammount of games in each genre or tag. 
+2. Histogram showing an increase or decrease in FPS/Shooting games overtime
+3. Filter publisher/studios who are making a majority of FPS/Shooting content and make a top 5
+4. Comparing reviews of the top 3-5 genres
+5. Most popular tags for FPS/Shooting
+6. Compare FPS/Shooting Prices
+
+Sub Questions with the graphs
+
+How many shooter games are there out of all the other genres?
+    
+    1. Have a bar chart with the amount of games in each genre or tag.
+    2. Make a graph that includes only FPS, action, and shooting games.
+
+What is the studio's the created these kinds of games popularity through gaming?
+   
+   1. Filter publisher/studios who are making a majority of FPS/Shooting content and make a top 5
+   2. (Maybe) Pie chart for the genre of games that the studio/publisher created.
+   

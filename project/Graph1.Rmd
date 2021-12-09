@@ -1,0 +1,85 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
+```
+
+```{r}
+steam_data <- read.csv(url("https://raw.githubusercontent.com/TealKatt/Data-Science-Project/main/Project/data/steam.csv?token=AU22RCO6KMDCLO35MYXB3NTBWFJN2"))
+
+steam_data
+```
+```{r}
+filter(steam_data, developer == "Valve")
+```
+
+```{r}
+steam_data %>%
+  filter(str_detect(steamspy_tags, "FPS")) 
+```
+```{r}
+steam_data %>%
+  select(developer, steamspy_tags)
+```
+```{r}
+FPS_Studios <- steam_data %>%
+  select(developer, steamspy_tags)
+```
+
+```{r}
+Top5Studios <- FPS_Studios[rev(order(FPS_Studios$Count)), "FPS"][1:5]
+```
+
+```{r}
+Top5Studios<- FPS_Studios %>%
+  group_by(FPS_Studios) %>%
+  summarise(top_n(5))
+```
+```{r}
+print(FPS_Studios)
+```
+
+
+```{r}
+FPS_Studios%>%
+  group_by(developer) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+```
+
+```{r}
+FPS_STudio <- FPS_Studios %>%
+  filter(str_detect(steamspy_tags, "FPS"))
+```
+
+```{r}
+Top_Five_Studio <- FPS_STudio %>%
+  group_by(developer) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total)) 
+```
+```{r}
+print(Top_Five_Studio)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+Top_Studio <- data.frame(
+  Developers = c("Valve", "Id Software", "NovaLogic", "Gearbox Software", "Epic Games Inc."),
+  Amount_of_fps_games = c(19, 16, 8, 7, 5)
+)
+```
+
+```{r}
+ggplot(Top_Studio, aes(x=Developers, y=Amount_of_fps_games )) +
+  geom_col()
+```

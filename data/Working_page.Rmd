@@ -1,0 +1,17 @@
+---
+title: "Working Data"
+output: html_notebook
+---
+
+```{r}
+#Downloading Code
+
+steam_data <- read.csv(url("https://raw.githubusercontent.com/TealKatt/Data-Science-Project/main/Project/data/steam.csv?token=AU22RCO6KMDCLO35MYXB3NTBWFJN2"))
+
+steam_data
+
+colnames(steam_data)
+dim(steam_data)
+glimpse(steam_data)
+```
+

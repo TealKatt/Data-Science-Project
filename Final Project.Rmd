@@ -1,0 +1,142 @@
+---
+title: "Final Project"
+author: Kevin Campbell
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(readr)
+library(ggplot2)
+```
+
+```{r}
+steam_data <- read.csv(url("https://raw.githubusercontent.com/TealKatt/Data-Science-Project/main/Project/data/steam.csv?token=AU22RCO6KMDCLO35MYXB3NTBWFJN2"))
+
+steam_data
+```
+
+
+```{r}
+colnames(steam_data)
+dim(steam_data)
+glimpse(steam_data)
+```
+
+```{r}
+filter(steam_data, developer == "Valve")
+```
+
+```{r}
+steam_data %>%
+  filter(str_detect(steamspy_tags, "FPS")) 
+```
+```{r}
+steam_data %>%
+  select(developer, steamspy_tags)
+```
+```{r}
+FPS_Studios <- steam_data %>%
+  select(developer, steamspy_tags)
+```
+
+```{r}
+print(FPS_Studios)
+```
+
+
+```{r}
+FPS_Studios%>%
+  group_by(developer) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+```
+
+```{r}
+FPS_STudio <- FPS_Studios %>%
+  filter(str_detect(steamspy_tags, "FPS"))
+```
+
+```{r}
+Top_Five_Studio <- FPS_STudio %>%
+  group_by(developer) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total)) 
+```
+
+```{r}
+print(Top_Five_Studio)
+```
+
+
+```{r}
+Top_Studio <- data.frame(
+  Developers = c("Valve", "Id Software", "NovaLogic", "Gearbox Software", "Epic Games Inc."),
+  Amount_of_fps_games = c(19, 16, 8, 7, 5)
+)
+```
+
+```{r}
+ggplot(Top_Studio, aes(x=Developers, y=Amount_of_fps_games )) +
+  geom_col()
+```
+```{r}
+#Lines filter the amount of row in each genre
+Action <- steam_data %>%  filter(str_detect(steamspy_tags, "Action"))
+Action
+nrow(Action)
+
+FPS <- steam_data %>%  filter(str_detect(steamspy_tags, "FPS"))
+FPS
+nrow(FPS)
+
+Shooter <- steam_data %>%  filter(str_detect(steamspy_tags, "Shooter"))
+Shooter
+nrow(Shooter)
+
+Sci_fi <- steam_data %>%  filter(str_detect(steamspy_tags, "Sci-fi"))
+Sci_fi
+nrow(Sci_fi) 
+
+Puzzle <- steam_data %>%  filter(str_detect(steamspy_tags, "Puzzle"))
+Puzzle
+nrow(Puzzle)
+
+Indie <- steam_data %>%  filter(str_detect(steamspy_tags, "Indie"))
+Indie
+nrow(Indie)
+
+Strategy <- steam_data %>%  filter(str_detect(steamspy_tags, "Strategy"))
+Strategy
+nrow(Strategy)
+
+Racing <- steam_data %>%  filter(str_detect(steamspy_tags, "Racing"))
+Racing
+nrow(Racing)
+
+RPG <- steam_data %>%  filter(str_detect(steamspy_tags, "RPG"))
+RPG
+nrow(RPG)
+
+Casual <- steam_data %>%  filter(str_detect(steamspy_tags, "Casual"))
+Casual
+nrow(Casual)
+
+Horror <- steam_data %>%  filter(str_detect(steamspy_tags, "Horror"))
+Horror
+nrow(Horror)
+
+Simulation <- steam_data %>%  filter(str_detect(steamspy_tags, "Simulation"))
+Simulation
+nrow(Simulation)
+
+```
+
+```{r}
+ #Genres
+Top_Games <- data.frame (Genres = c("Action", "FPS", "Shooter", "Sci-fi", "Puzzle", "Indie", "Strategy", "Racing", "RPG", "Casual", "Horror", "Simulation"), Amount = c(10344,405,227,157,1167,16232,4180,765,2863,8205,566,3284))
+#ggplot(Top_Games, aes(x = Genres, y = Amount_of_games)) + geom_col(fill = "black") 
+ggplot(Top_Games, aes(x = Genres, y = Amount, fill = Genres,)) + geom_bar(stat = "identity", width = 0.5) + labs(title = "Number of games in each genre", x = "", y = "Amount (per game)") + coord_flip()
+```
